@@ -1,0 +1,39 @@
+{
+	"schemaVersion": 1,
+	"id": "elytraguard",
+	"version": "${version}",
+	"name": "BaritoneElytraGuard",
+	"description": "Suppresses Tweakeroo's Auto Switch Elytra while Baritone is pathing on the ground, so an accidental elytra deployment does not interfere with pathing.",
+	"authors": [
+		"WhiteElephant-abc"
+	],
+	"contact": {
+		"homepage": "https://github.com/WhiteElephant-abc/BaritoneElytraGuard",
+		"sources": "https://github.com/WhiteElephant-abc/BaritoneElytraGuard"
+	},
+	"license": "GPL-3.0-or-later",
+	"icon": "assets/elytraguard/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "io.github.whiteelephantabc.elytraguard.BaritoneElytraGuard",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		{
+			"config": "elytraguard.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-language-kotlin": "*",
+		"baritone": "*",
+		"tweakeroo": "*"
+	}
+}
