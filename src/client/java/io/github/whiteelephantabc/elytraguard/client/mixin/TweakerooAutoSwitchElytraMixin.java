@@ -9,7 +9,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(targets = "fi.dy.masa.tweakeroo.util.InventoryUtils", remap = false)
 public class TweakerooAutoSwitchElytraMixin {
 	@Inject(method = "equipBestElytra", at = @At("HEAD"), cancellable = true, remap = false)
-	private static void elytraguard$skipDuringBaritonePathing(CallbackInfo ci) {
+	private static void elytraguard$skipElytraDuringBaritonePathing(CallbackInfo ci) {
+		if (BaritoneState.INSTANCE.isGroundPathing()) {
+			ci.cancel();
+		}
+	}
+
+	@Inject(method = "equipBestFlightRockets", at = @At("HEAD"), cancellable = true, remap = false)
+	private static void elytraguard$skipRocketsDuringBaritonePathing(CallbackInfo ci) {
 		if (BaritoneState.INSTANCE.isGroundPathing()) {
 			ci.cancel();
 		}
